@@ -8,7 +8,7 @@
     2. location of the directory from which that list needs to be searched,
     3. location where searched files would be copied '''
 
-#get the location of the txt file in which list if files to be searched has been stored
+#get the location of the txt file in which list of files to be searched has been stored
 list_location =input("Location of the file containing names of files to be searched: ")
 
 #get the location of directory in which list of files to be searched
@@ -19,6 +19,10 @@ des_dir = input("Location to paste copied files: ")
 
 def main():
 
+#Create list of the files' names from the text file.
+def get_list():
+   my_list = loadtxt(list_location, dtype = 'str')
+   return my_list
 
 if __name__ == '__main__':
    main()
