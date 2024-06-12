@@ -15,7 +15,7 @@ list_location =input("Location of the file containing names of files to be searc
 directory_location = input("Location of the directory in which files need to be searched: ") 
 
 #get location of the directory where searched files need to be pasted
-des_dir = input("Location to paste copied files: ")
+destination_dir = input("Location to paste copied files: ")
 
 def main():
 
@@ -25,14 +25,14 @@ def get_list():
    return my_list
 
 #Create list of the files' names from the directory.
-def search_directory(list): 
+def search_directory(): 
    dir_list =[]
    for dirpath, dirs, files in os.walk(directory_location):
       for names in files:
          dir_list.append(names)
    return dir_list
 
-#Compare the list of files' name from text file and the list of the files' name from the directory, in order to get list of files' name present in the directory
+#Compare the list of files' name from text file and the list of the files' name from the directory, in order to get list of files' name present in the directory.
 def search(list, directory):
    matched_list = []
    for each_x in list:
@@ -42,6 +42,17 @@ def search(list, directory):
          pass
    #print(matched_list)
    return matched_list
+
+#search the path of the matched_list files, copy them and paste them in the desired location.
+def copy_files(match_list):
+   for dirpath, dirs, files in os.walk(directory_location):
+      for names in files:
+         file_path = (os.path.join(dirpath, names))
+         if names in match_list:
+            try:
+               copy2(file_path, destination_dir)
+            except SameFileError:
+               pass
 
 
 if __name__ == '__main__':
