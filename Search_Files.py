@@ -20,8 +20,7 @@ des_dir = input("Location to paste copied files: ")
 def main():
 
 #Create list of the files' names from the text file.
-def get_list():
-    
+def get_list(): 
    my_list = loadtxt(list_location, dtype = 'str')
    return my_list
 
@@ -32,6 +31,17 @@ def search_directory(list):
       for names in files:
          dir_list.append(names)
    return dir_list
+
+#Compare the list of files' name from text file and the list of the files' name from the directory, in order to get list of files' name present in the directory
+def search(list, directory):
+   matched_list = []
+   for each_x in list:
+      if each_x in directory:
+         matched_list.append(each_x)
+      else:
+         pass
+   #print(matched_list)
+   return matched_list
 
 
 if __name__ == '__main__':
