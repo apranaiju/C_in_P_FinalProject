@@ -18,6 +18,12 @@ directory_location = input("Location of the directory in which files need to be 
 destination_dir = input("Location to paste copied files: ")
 
 def main():
+    
+    list = get_list()
+    directory = search_list()
+    jk = search(list, directory)
+    copy_files(jk)
+    
 
 #Create list of the files' names from the text file.
 def get_list(): 
