@@ -21,8 +21,18 @@ def main():
 
 #Create list of the files' names from the text file.
 def get_list():
+    
    my_list = loadtxt(list_location, dtype = 'str')
    return my_list
+
+#Create list of the files' names from the directory.
+def search_directory(list): 
+   dir_list =[]
+   for dirpath, dirs, files in os.walk(directory_location):
+      for names in files:
+         dir_list.append(names)
+   return dir_list
+
 
 if __name__ == '__main__':
    main()
